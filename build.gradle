@@ -1,0 +1,76 @@
+group 'com.wiprodigital'
+version '1.0.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        //'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.4.3.RELEASE'
+
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE"
+        classpath "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.1"
+
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+
+springBoot {
+    mainClass = "com.wiprodigital.Application"
+}
+
+jar {
+    baseName = 'web-crawler'
+    version =  '0.0.1'
+}
+
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/resources"]
+        }
+    }
+
+    test {
+        java {
+            srcDirs = ["src/test/java"]
+            exclude 'com/wiprodigital/**'
+
+        }
+    }
+}
+
+ext {
+    springBootVersion = '1.4.3.RELEASE'
+}
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework:spring-test:4.3.5.RELEASE"
+    compile "org.springframework.boot:spring-boot"
+    compile "org.springframework.boot:spring-boot-starter"
+    compile "org.apache.httpcomponents:httpclient:4.5.2"
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+}
