@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 
 @EnableAutoConfiguration
-@ComponentScan(basePackages ={"com.wiprodigital.crawler.rest"})
+@ComponentScan(basePackages ={"com.wiprodigital.crawler"})
 public class CrawlerConfiguration {
 
 
