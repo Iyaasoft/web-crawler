@@ -50,10 +50,12 @@ public class CrawlerService {
         });
 
         });
-    }private List<String> searchPageForChildUrls(String url, List<String> anchorsToParse) {
+    }
+
+    private List<String> searchPageForChildUrls(String url, List<String> anchorsToParse) {
 
         List<String> childUrls = new ArrayList();
-        anchorsToParse.parallelStream().forEach(line -> {
+        anchorsToParse.stream().forEach(line -> {
             List<String> hrefs = crawlerPageParser.parseStringAndExractDomainHref(line,getDomain(url));
             if(!url.equals(hrefs)){
                 childUrls.addAll(hrefs);
